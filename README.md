@@ -3,58 +3,56 @@
 
 ![](<Architecture App.png>)
 
-## Liens utiles :
+## Useful links:
 
+## Cost estimation: Estimation.pdf
 
-## Coûts estimation : Estimation.pdf
-
-## Fonctionnalités :
-- Déploiement d’une application haute disponible et resiliente à deux niveaux: Couche presentation & metier et couche base de données: Cas de wordpress
+## Features:
+- Deployment of a highly available and resilient application at two levels: Presentation & business layer and database layer: WordPress case
 - Auto scaling
 - Load Balancing
-- Persistance des données
+- Data persistence
 
-## Services :
+## Services:
 
-### Réseau
-- **VPC (Virtual Private Cloud)** : Fournit un réseau isolé dans le cloud, permettant de définir des sous-réseaux, des règles de sécurité, et des connexions à Internet.
-- **SUBNET (Sous-réseau)** : Divise un VPC en segments plus petits pour organiser les ressources et gérer la sécurité.
-- **INTERNET GATEWAY** : Permet la communication entre les ressources dans un VPC et Internet.
-- **EIP (Elastic IP)** : Adresse IP statique qui peut être associée à une instance pour la rendre accessible sur Internet.
-- **ALB (Application Load Balancer)** : Distribue le trafic entrant entre plusieurs cibles (instances EC2, conteneurs, etc.) et permet de gérer le routage basé sur le contenu.
-- **ACL (Access Control List)** : Définit des règles de sécurité pour contrôler le trafic entrant et sortant au niveau des sous-réseaux.
-- **NAT (Network Address Translation)** : Permet aux instances dans un sous-réseau privé d'accéder à Internet sans exposer leurs adresses IP.
-- **ROUTE (Table de routage)** : Définit les règles de routage pour diriger le trafic entre les sous-réseaux et vers Internet.
-- **SECURITY GROUP** : Agit comme un pare-feu virtuel pour contrôler le trafic entrant et sortant des instances.
+### Network
+- **VPC (Virtual Private Cloud)**: Provides an isolated network in the cloud, allowing to define subnets, security rules, and connections to the Internet.
+- **SUBNET (Subnet)**: Divides a VPC into smaller segments to organize resources and manage security.
+- **INTERNET GATEWAY**: Allows communication between resources in a VPC and the Internet.
+- **EIP (Elastic IP)**: Static IP address that can be associated with an instance to make it accessible on the Internet.
+- **ALB (Application Load Balancer)**: Distributes inbound traffic across multiple targets (EC2 instances, containers, etc.) and helps manage content-based routing.
+- **ACL (Access Control List)**: Defines security rules to control inbound and outbound traffic at the subnet level.
+- **NAT (Network Address Translation)**: Allows instances in a private subnet to access the Internet without exposing their IP addresses.
+- **ROUTE (Routing Table)**: Defines routing rules to direct traffic between subnets and to the Internet.
+- **SECURITY GROUP**: Acts as a virtual firewall to control inbound and outbound traffic for instances.
 
-### Réseau et DNS
-- **ROUTE 53** : Service DNS qui permet de gérer les noms de domaine et de diriger le trafic vers les ressources AWS.
+### Network and DNS
+- **ROUTE 53**: DNS service that helps manage domain names and direct traffic to AWS resources.
 
-### Sécurité
-- **SECRET MANAGER** : Service qui permet de stocker et de gérer les secrets (comme les mots de passe et les clés API) de manière sécurisée.
-- **IAM (Identity and Access Management)** : Définir ce que les utilisateurs et les rôles peuvent faire avec les ressources AWS.
-  - **Rôle** : Un rôle IAM est une entité qui définit un ensemble de permissions pour effectuer des actions sur des ressources AWS. Contrairement aux utilisateurs, les rôles ne sont pas associés à une personne ou un compte spécifique, mais peuvent être assumés par des services AWS, des utilisateurs ou des applications. Les rôles sont souvent utilisés pour accorder des permissions temporaires.
-  - **Permission** : Définir ce que les utilisateurs et les rôles peuvent faire avec les ressources AWS.
-- **AWS Certificate Manager (ACM)**: permet de provisionner, gérer et déployer des certificats SSL/TLS publics et privés pour sécuriser les communications avec les services AWS et les ressources internes connectées12.
- 
-### Stockage
-- **S3 (Simple Storage Service)** : Service de stockage d'objets pour stocker et récupérer des données à tout moment.
-- **EFS (Elastic File System)** : Système de fichiers évolutif qui peut être monté sur plusieurs instances EC2.
+### Security
+- **SECRET MANAGER**: A service that securely stores and manages secrets (such as passwords and API keys).
+- **IAM (Identity and Access Management)**: Defines what users and roles can do with AWS resources.
+- **Role**: An IAM role is an entity that defines a set of permissions to perform actions on AWS resources. Unlike users, roles are not associated with a specific person or account, but can be assumed by AWS services, users, or applications. Roles are often used to grant temporary permissions.
+- **Permission**: Defines what users and roles can do with AWS resources.
+- **AWS Certificate Manager (ACM)**: Provisions, manages, and deploys public and private SSL/TLS certificates to secure communications with AWS services and connected internal resources12.
 
-### Base de données
-- **RDS (Relational Database Service)** : Service de base de données relationnelle géré pour MySQL, PostgreSQL, Oracle, SQL Server et MariaDB.
+### Storage
+- **S3 (Simple Storage Service)**: An object storage service for storing and retrieving data at any time.
+- **EFS (Elastic File System)**: A scalable file system that can be mounted across multiple EC2 instances.
 
-### Calcul (Conteneurs)
-- **ECS (Elastic Container Service)** : Service d’orchestration de conteneurs qui facilite le déploiement et la gestion d'applications conteneurisées.
-- **Fargate** : est un service de calcul sans serveur qui permet de déployer et de gérer des conteneurs sans avoir à gérer l'infrastructure sous-jacente. Il fonctionne avec des services comme Amazon ECS (Elastic Container Service) et Amazon EKS (Elastic Kubernetes Service).
-- **Task** : Unité de travail dans ECS qui définit un ensemble de conteneurs à exécuter ensemble.
-- **Task Definition** : Modèle qui définit les paramètres pour les tâches ECS, y compris les images de conteneur, les ressources, et les configurations réseau.
-- **Auto Scaling** : Surveille vos applications et ajuste automatiquement la capacité pour maintenir des performances constantes et prévisibles au coût le plus bas possible.
+### Database
+- **RDS (Relational Database Service)**: A managed relational database service for MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB.
 
+### Compute (Containers)
+- **ECS (Elastic Container Service)**: A container orchestration service that makes it easy to deploy and manage containerized applications.
+- **Fargate**: A serverless compute service that allows you to deploy and manage containers without having to manage the underlying infrastructure. It works with services like Amazon ECS (Elastic Container Service) and Amazon EKS (Elastic Kubernetes Service).
+- **Task**: A unit of work in ECS that defines a set of containers to run together.
+- **Task Definition**: A template that defines parameters for ECS tasks, including container images, resources, and network configurations.
+- **Auto Scaling**: Monitors your applications and automatically adjusts capacity to maintain consistent, predictable performance at the lowest possible cost.
 
-### Surveillance et Gestion des Ressources
-- **CLOUDWATCH** : Service de surveillance qui collecte et suit les métriques, les journaux, et les événements pour les ressources AWS.
-  - **Container Insight** : Outil de surveillance pour les conteneurs.
-  - **Logs Groups** : Regroupe les journaux pour une gestion et une analyse centralisées.
+### Resource Monitoring and Management
+- **CLOUDWATCH**: A monitoring service that collects and tracks metrics, logs, and events for AWS resources.
+- **Container Insight**: A monitoring tool for containers.
+- **Logs Groups**: Groups logs together for centralized management and analysis.
 
   
