@@ -1,9 +1,8 @@
 
-# Déploiement d’une App sur ECS et RDS
+# Deploying an App on ECS and RDS
 
 ![](<Architecture App.png>)
 
-## Useful links:
 
 ## Cost estimation: Estimation.pdf
 
